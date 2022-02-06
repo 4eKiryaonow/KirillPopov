@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Run sum sub tests">
+    <test name="run sum sub">
+        <classes>
+            <class name="com.epam.tc.hw1.TestSum"></class>
+            <class name="com.epam.tc.hw1.TestSub"></class>
+
+        </classes>
+    </test>
+</suite>
