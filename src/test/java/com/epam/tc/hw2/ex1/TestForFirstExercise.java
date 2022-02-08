@@ -54,8 +54,8 @@ public class TestForFirstExercise {
 
         //4. Assert Username is loggined
         SoftAssert assertUserLoggined = new SoftAssert();
-        WebElement UserName = driver.findElement(By.id("user-name"));
-        assertUserLoggined.assertEquals(UserName.getText(),"ROMAN IOVLEV");
+        WebElement logusername = driver.findElement(By.id("user-name"));
+        assertUserLoggined.assertEquals(logusername.getText(), "ROMAN IOVLEV");
 
     }
 
