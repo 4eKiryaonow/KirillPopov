@@ -34,13 +34,14 @@ public class TestForFirstExercise {
 
     @AfterMethod
     public void tearDown() {
+        //12. Close Browser
         driver.quit();
 
     }
 
     @Test
-
     public void testForFirstExercise() {
+
         //Step 2. Assert Browser title
         SoftAssert softAssert = new SoftAssert();
         wait.until(ExpectedConditions.titleIs("Home Page"));
