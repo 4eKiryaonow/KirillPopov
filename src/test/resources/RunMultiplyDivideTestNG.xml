@@ -2,9 +2,15 @@
 
 <suite name="Run multiply divide tests">
     <test name="run multiply divide">
+        <groups>
+            <run>
+                <include name="Divide and Multiply" />
+            </run>
+        </groups>
         <classes>
-            <class name="com.epam.tc.hw1.TestDivide"></class>
-            <class name="com.epam.tc.hw1.TestMultiply"></class>
+            <class name="com.epam.tc.hw1.TestDivide" />
+            <class name="com.epam.tc.hw1.TestMultiply" />
         </classes>
+
     </test>
 </suite>

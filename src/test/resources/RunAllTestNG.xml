@@ -2,11 +2,8 @@
 
 <suite name="Run all tests">
     <test name="All tests">
-        <classes>
-            <class name="com.epam.tc.hw1.TestSum"></class>
-            <class name="com.epam.tc.hw1.TestSub"></class>
-            <class name="com.epam.tc.hw1.TestDivide"></class>
-            <class name="com.epam.tc.hw1.TestMultiply"></class>
-        </classes>
+        <packages>
+            <package name="com.epam.tc.hw1"/>
+        </packages>
     </test>
 </suite>

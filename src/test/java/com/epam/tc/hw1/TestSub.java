@@ -1,15 +1,11 @@
 package com.epam.tc.hw1;
 
-import static org.assertj.core.api.Assertions.withPrecision;
-import static org.assertj.core.api.Java6Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import com.epam.tat.module4.Calculator;
 import org.testng.annotations.Test;
 
 
-
-
-public class TestSub {
+public class TestSub extends TestBaseClass {
 
     @Test(
             dataProviderClass = DataProviderForCalculator.class,
@@ -17,7 +13,6 @@ public class TestSub {
     )
     void subTestDouble(long a, long b, long expected) {
 
-        Calculator calculator = new Calculator();
         long result = calculator.sub(a, b);
         assertThat(result).as("Sub is wrong").isEqualTo(expected);
 

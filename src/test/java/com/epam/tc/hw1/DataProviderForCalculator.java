@@ -6,7 +6,7 @@ public class DataProviderForCalculator {
 
     @DataProvider(name = "Data for sum")
     public static Object[][] getTestDataForSum() {
-        return new Object[][] {
+        return new Object[][]{
                 {1, 3, 4},
                 {2, 5, 7},
                 {0, 1, 1},
@@ -21,7 +21,7 @@ public class DataProviderForCalculator {
 
     @DataProvider(name = "Data for sub")
     public static Object[][] getTestDataForSub() {
-        return new Object[][] {
+        return new Object[][]{
                 {1, 1, 0},
                 {2, 1, 1},
                 {5, 6, -1},
@@ -37,7 +37,7 @@ public class DataProviderForCalculator {
 
     @DataProvider(name = "Data for multiply")
     public static Object[][] getTestDataForMultiply() {
-        return new Object[][] {
+        return new Object[][]{
                 {1, 1, 1},
                 {2, 1, 2},
                 {0, 1, 0},
@@ -53,7 +53,7 @@ public class DataProviderForCalculator {
 
     @DataProvider(name = "Data for divide")
     public static Object[][] getTestDataForDivide() {
-        return new Object[][] {
+        return new Object[][]{
                 {1, 1, 1},
                 {2, 1, 2},
                 {0, 1, 0},
@@ -63,5 +63,15 @@ public class DataProviderForCalculator {
 
         };
 
+    }
+
+    @DataProvider(name = "Data for division by zero")
+    public static Object[][] getTestDataForDivisionByZero() {
+        return new Object[][]{
+                {1, 0},
+                {0, 0},
+                {-1, 0},
+
+        };
     }
 }
