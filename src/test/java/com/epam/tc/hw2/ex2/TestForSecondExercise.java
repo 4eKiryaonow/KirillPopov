@@ -1,6 +1,6 @@
 package com.epam.tc.hw2.ex2;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.time.Duration;
