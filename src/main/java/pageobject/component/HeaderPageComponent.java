@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HeaderPageComponent extends AbstractBaseComponent {
 
@@ -26,6 +27,9 @@ public class HeaderPageComponent extends AbstractBaseComponent {
 
     @FindBy(xpath = "//ul[contains(@class, 'm-l8')]/li")
     private List<WebElement> navigationMenu;
+
+    @FindBy(className = "dropdown")
+    private WebElement serviceDropdown;
 
     public HeaderPageComponent(WebDriver driver) {
 
@@ -56,6 +60,22 @@ public class HeaderPageComponent extends AbstractBaseComponent {
                 .collect(Collectors.toList());
 
     }
+
+    public void clickByServiceDropDownMenu() {
+
+        wait.until(ExpectedConditions.elementToBeClickable(serviceDropdown))
+                .click();
+
+    }
+
+    public void clickByDifferentElements() {
+
+        this.clickByServiceDropDownMenu();
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//*[text()='Different elements']"))).click();
+
+    }
+
 
 
 }
