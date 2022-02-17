@@ -5,20 +5,23 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageobject.component.HeaderPageComponent;
+import pageobject.component.LeftSideBarComponent;
 
-public abstract class BasePageObject {
+public abstract class AbstractPageObject {
 
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected String title;
     protected HeaderPageComponent header;
+    protected LeftSideBarComponent leftSideBar;
 
-    protected BasePageObject(WebDriver driver) {
+    protected AbstractPageObject(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         this.title = this.driver.getTitle();
         PageFactory.initElements(this.driver, this);
         header = new HeaderPageComponent(driver);
+        leftSideBar = new LeftSideBarComponent(driver);
     }
 
     public String getTitle() {
@@ -28,5 +31,10 @@ public abstract class BasePageObject {
 
     public HeaderPageComponent header() {
         return this.header;
+    }
+
+    public LeftSideBarComponent leftSideBar() {
+
+        return this.leftSideBar;
     }
 }
