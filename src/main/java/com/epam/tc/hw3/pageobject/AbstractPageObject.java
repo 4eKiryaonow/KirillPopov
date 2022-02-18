@@ -1,11 +1,13 @@
-package pageobject;
+package com.epam.tc.hw3.pageobject;
 
+import com.epam.tc.hw3.pageobject.component.HeaderPageComponent;
+import com.epam.tc.hw3.pageobject.component.LeftSideBarComponent;
+import com.epam.tc.hw3.pageobject.component.RightSideBarComponent;
 import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pageobject.component.HeaderPageComponent;
-import pageobject.component.LeftSideBarComponent;
+
 
 public abstract class AbstractPageObject {
 
@@ -14,6 +16,7 @@ public abstract class AbstractPageObject {
     protected String title;
     protected HeaderPageComponent header;
     protected LeftSideBarComponent leftSideBar;
+    protected RightSideBarComponent rightSideBar;
 
     protected AbstractPageObject(WebDriver driver) {
         this.driver = driver;
@@ -22,6 +25,8 @@ public abstract class AbstractPageObject {
         PageFactory.initElements(this.driver, this);
         header = new HeaderPageComponent(driver);
         leftSideBar = new LeftSideBarComponent(driver);
+        rightSideBar = new RightSideBarComponent(driver);
+
     }
 
     public String getTitle() {
@@ -36,5 +41,10 @@ public abstract class AbstractPageObject {
     public LeftSideBarComponent leftSideBar() {
 
         return this.leftSideBar;
+    }
+
+    public RightSideBarComponent rightSideBar() {
+
+        return this.rightSideBar;
     }
 }

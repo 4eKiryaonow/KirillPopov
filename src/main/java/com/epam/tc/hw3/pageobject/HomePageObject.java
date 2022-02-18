@@ -1,4 +1,4 @@
-package pageobject;
+package com.epam.tc.hw3.pageobject;
 
 import java.util.List;
 import org.openqa.selenium.By;

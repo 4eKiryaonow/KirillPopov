@@ -1,12 +1,14 @@
 package com.epam.tc.hw3.ex1;
 
 import com.epam.tc.hw3.BaseClassTest;
+import com.epam.tc.hw3.PropertiesReader;
+import com.epam.tc.hw3.pageobject.HomePageObject;
 import java.util.Arrays;
 import java.util.List;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import pageobject.HomePageObject;
+
 
 
 public class TestForFirstExercise extends BaseClassTest {
@@ -23,7 +25,7 @@ public class TestForFirstExercise extends BaseClassTest {
 
         //Step 3. Perform login
         homePageObject.header()
-                .login("Roman", "Jdi1234");
+                .login(PropertiesReader.getProperty("username"), PropertiesReader.getProperty("password"));
 
         //4. Assert Username is loggined
         softAssert.assertEquals(homePageObject.getLoggedUserAsText(), "ROMAN IOVLEV");
