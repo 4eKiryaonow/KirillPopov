@@ -1,4 +1,4 @@
-package pageobject;
+package com.epam.tc.hw3.pageobject;
 
 
 import org.openqa.selenium.WebDriver;

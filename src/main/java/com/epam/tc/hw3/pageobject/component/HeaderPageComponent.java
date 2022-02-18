@@ -1,4 +1,4 @@
-package pageobject.component;
+package com.epam.tc.hw3.pageobject.component;
 
 import java.util.List;
 import java.util.stream.Collectors;

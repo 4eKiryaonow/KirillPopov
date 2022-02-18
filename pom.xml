@@ -22,32 +22,32 @@
         <testng.configs.path>${project.build.testOutputDirectory}</testng.configs.path>
     </properties>
 
-<dependencies>
-    <dependency>
-        <groupId>org.testng</groupId>
-        <artifactId>testng</artifactId>
-        <version>${testng.version}</version>
-        <scope>test</scope>
-    </dependency>
+    <dependencies>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <scope>test</scope>
+        </dependency>
 
-    <dependency>
-        <groupId>org.assertj</groupId>
-        <artifactId>assertj-core</artifactId>
-        <version>${assertj-core.version}</version>
-        <scope>test</scope>
-    </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
+            <scope>test</scope>
+        </dependency>
 
-    <dependency>
-        <groupId>org.seleniumhq.selenium</groupId>
-        <artifactId>selenium-java</artifactId>
-        <version>4.1.1</version>
-    </dependency>
-    <dependency>
-        <groupId>io.github.bonigarcia</groupId>
-        <artifactId>webdrivermanager</artifactId>
-        <version>5.0.2</version>
-    </dependency>
-</dependencies>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>5.0.2</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
@@ -103,12 +103,12 @@
     </build>
 
     <profiles>
-    <profile>
-        <id>All tests</id>
-        <properties>
-            <testng.suite.file>${testng.configs.path}/TestNG.xml</testng.suite.file>
-        </properties>
-    </profile>
+        <profile>
+            <id>All tests</id>
+            <properties>
+                <testng.suite.file>${testng.configs.path}/TestNG.xml</testng.suite.file>
+            </properties>
+        </profile>
     </profiles>
 
 </project>

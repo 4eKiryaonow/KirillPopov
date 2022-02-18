@@ -1,16 +1,23 @@
 package com.epam.tc.hw3.ex2;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.epam.tc.hw3.BaseClassTest;
-import org.assertj.core.api.SoftAssertions;
+import com.epam.tc.hw3.PropertiesReader;
+import com.epam.tc.hw3.pageobject.DifferentElementsPageObject;
+import com.epam.tc.hw3.pageobject.HomePageObject;
+import java.util.Arrays;
+import java.util.List;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import pageobject.DifferentElementsPageObject;
-import pageobject.HomePageObject;
+
+
 
 public class TestForSecondExercise extends BaseClassTest {
 
     @Test
-    public void testForSecondExercise() throws InterruptedException {
+    public void testForSecondExercise() {
 
         SoftAssert softAssert = new SoftAssert();
         HomePageObject homePageObject = new HomePageObject(driver);
@@ -20,10 +27,11 @@ public class TestForSecondExercise extends BaseClassTest {
 
         //Step 3. Perform login
         homePageObject.header()
-                .login("Roman", "Jdi1234");
+                .login(PropertiesReader.getProperty("username"),
+                        PropertiesReader.getProperty("password"));
 
         //4. Assert Username is loggined
-        softAssert.assertEquals(homePageObject.getLoggedUserAsText(), "ROMAN IOVLEV");
+        assertThat(homePageObject.getLoggedUserAsText()).isEqualTo("ROMAN IOVLEV");
 
         //5. Open through the header menu Service -> Different Elements Page
         homePageObject.header().clickByDifferentElements();
@@ -40,12 +48,28 @@ public class TestForSecondExercise extends BaseClassTest {
         //8. Select in dropdown Yellow
         differentElementsPageObject.selectColor("Yellow");
 
-
         /* 9. Assert that:
         - for each checkbox there is an individual log row and value is corresponded to the status of checkbox
         - for radio button there is a log row and value is corresponded to the status of radio button
         - for dropdown there is a log row and value is corresponded to the selected value.
         */
+        List<String> logRowsExpected = Arrays.asList(
+                "Water: condition changed to true",
+                "Wind: condition changed to true",
+                "metal: value changed to Selen",
+                "Colors: value changed to Yellow"
+        );
+
+        differentElementsPageObject.rightSideBar()
+                .logsList()
+                .stream()
+                .map(WebElement::getText)
+                .map(text -> text.replaceAll("^\\d*[:]\\d*[:]\\d*\\s", ""))
+                .forEach(text -> assertThat(text).isIn(logRowsExpected));
+
+
+
+
 
     }
 }
