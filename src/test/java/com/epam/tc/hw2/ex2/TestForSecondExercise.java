@@ -2,44 +2,16 @@ package com.epam.tc.hw2.ex2;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-import java.time.Duration;
+import com.epam.tc.hw2.SeleniumBaseClass;
 import java.util.List;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class TestForSecondExercise {
+public class TestForSecondExercise extends SeleniumBaseClass {
 
-    WebDriver driver;
-    WebDriverWait wait;
-
-    @BeforeMethod
-    public void setUp() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        //Step 1. Open test site by URL
-        driver.get("https://jdi-testing.github.io/jdi-light/index.html");
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        //set Explicity
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-    }
-
-    @AfterMethod
-    public void tearDown() {
-        //12. Close Browser
-        driver.quit();
-
-    }
 
     @Test
     public void testForSecondExercise() {
@@ -75,7 +47,7 @@ public class TestForSecondExercise {
         wait.until(ExpectedConditions.elementToBeClickable(findService));
         findService.click();
         WebElement findDiffElement = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//*[text()='Different elements']")));
+                By.xpath("//ul[contains(@class, 'm-l8')]/descendant::ul/descendant::*[text()='Different elements']")));
 
         findDiffElement.click();
 
