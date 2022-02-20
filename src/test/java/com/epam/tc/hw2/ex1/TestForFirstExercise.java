@@ -4,7 +4,6 @@ import static org.assertj.core.util.Lists.newArrayList;
 
 import com.epam.tc.hw2.SeleniumBaseClass;
 import java.util.List;
-import java.util.stream.Collectors;
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
