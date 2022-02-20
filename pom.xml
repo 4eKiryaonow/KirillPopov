@@ -20,7 +20,6 @@
         <assertj-core.version>3.4.1</assertj-core.version>
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
-
         <testng.suite.file>${testng.configs.path}/testNG.xml</testng.suite.file>
         <testng.configs.path>${project.build.testOutputDirectory}</testng.configs.path>
     </properties>
