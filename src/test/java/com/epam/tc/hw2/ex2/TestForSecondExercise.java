@@ -1,9 +1,11 @@
 package com.epam.tc.hw2.ex2;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.util.Lists.newArrayList;
 
 import com.epam.tc.hw2.SeleniumBaseClass;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -17,7 +19,6 @@ public class TestForSecondExercise extends SeleniumBaseClass {
     public void testForSecondExercise() {
 
         //Step 2. Assert Browser title
-        wait.until(ExpectedConditions.titleIs("Home Page"));
         assertThat(driver.getTitle()).as("Title home page is wrong").isEqualTo("Home Page");
 
         //Step 3. Perform login
@@ -53,16 +54,16 @@ public class TestForSecondExercise extends SeleniumBaseClass {
 
         //6. Select checkboxes Water, Wind
         WebElement checkBoxWater = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//*[text()[contains(.,'Water')]]/child::input")));
+                By.xpath("//div[@class='checkbox-row']/label[contains(., 'Water')]/input")));
         checkBoxWater.click();
 
         WebElement checkBoxWind = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//*[text()[contains(.,'Wind')]]/child::input")));
+                By.xpath("//div[@class='checkbox-row']/label[contains(., 'Wind')]/input")));
         checkBoxWind.click();
 
         //7. Select radio
         WebElement radioSelen = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//*[text()[contains(.,'Selen')]]/child::input")));
+                By.xpath("//div[@class='checkbox-row']/label[contains(., 'Selen')]/input")));
         radioSelen.click();
 
         //8. Select in dropdown Yellow
@@ -75,18 +76,24 @@ public class TestForSecondExercise extends SeleniumBaseClass {
         - for radio button there is a log row and value is corresponded to the status of radio button
         - for dropdown there is a log row and value is corresponded to the selected value.
         */
-        WebElement logsBody = wait.until(ExpectedConditions.visibilityOf(
-                driver.findElement(By.className("logs"))));
-        List<WebElement> logRows = logsBody.findElements(By.tagName("li"));
+        List<WebElement> logRows = wait.until(
+                ExpectedConditions.numberOfElementsToBeMoreThan(By.cssSelector(".logs > li"), 3));
 
-        assertThat(logRows.get(3).getText())
-                .as("Checkbox Water is wrong").contains("Water: condition changed to true");
-        assertThat(logRows.get(2).getText())
-                .as("Checkbox Wind is wrong").contains("Wind: condition changed to true");
-        assertThat(logRows.get(1).getText())
-                .as("Radio Selen is wrong").contains("metal: value changed to Selen");
-        assertThat(logRows.get(0).getText())
-                .as("Checkbox Water is wrong").contains("Colors: value changed to Yellow");
+        List<String> actualLogRows = logRows
+                .stream()
+                .map(WebElement::getText)
+                .map(text -> text.replaceAll("^\\d*[:]\\d*[:]\\d*\\s", "").trim())
+                .collect(Collectors.toList());
+
+        List<String> expectedLogRows = newArrayList(
+                "Colors: value changed to Yellow",
+                "metal: value changed to Selen",
+                "Wind: condition changed to true",
+                "Water: condition changed to true"
+                );
+
+        assertThat(actualLogRows).containsExactlyElementsOf(expectedLogRows);
+
 
     }
 }
