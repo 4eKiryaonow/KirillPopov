@@ -31,15 +31,7 @@
             <version>${testng.version}</version>
             <scope>test</scope>
         </dependency>
-
-        <dependency>
-            <groupId>epam.com.tc</groupId>
-            <artifactId>calculator</artifactId>
-            <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/lib/calculator-1.0.jar</systemPath>
-        </dependency>
-
+        
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
