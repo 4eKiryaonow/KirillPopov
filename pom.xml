@@ -13,12 +13,13 @@
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <testng.version>7.4.0</testng.version>
+        <selenium-java.version>4.1.1</selenium-java.version>
+        <webdrivermanager.version>5.0.2</webdrivermanager.version>
         <checkstyle.version>9.2.1</checkstyle.version>
         <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
         <assertj-core.version>3.4.1</assertj-core.version>
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
-
         <testng.suite.file>${testng.configs.path}/testNG.xml</testng.suite.file>
         <testng.configs.path>${project.build.testOutputDirectory}</testng.configs.path>
     </properties>
@@ -32,21 +33,21 @@
         </dependency>
 
         <dependency>
-            <groupId>epam.com.tc</groupId>
-            <artifactId>calculator</artifactId>
-            <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/lib/calculator-1.0.jar</systemPath>
-        </dependency>
-
-        <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj-core.version}</version>
             <scope>test</scope>
         </dependency>
-
-
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${webdrivermanager.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -87,6 +88,10 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
             </plugin>
 
             <plugin>
@@ -94,7 +99,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
-                    <suiteXmlFiles>${testng.suite.file}</suiteXmlFiles>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${testng.suite.file}</suiteXmlFile>
+                    </suiteXmlFiles>
                 </configuration>
             </plugin>
 
@@ -129,8 +136,16 @@
             </properties>
         </profile>
 
+        <profile>
+            <id>SecondHomeWork</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <testng.suite.file>${testng.configs.path}/TestNG.xml</testng.suite.file>
+            </properties>
 
-
+        </profile>
     </profiles>
 
 </project>
