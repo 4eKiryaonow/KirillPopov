@@ -13,7 +13,6 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 
-
 public class TestForSecondExercise extends SeleniumBaseClass {
 
     @Test
@@ -52,22 +51,15 @@ public class TestForSecondExercise extends SeleniumBaseClass {
         - for radio button there is a log row and value is corresponded to the status of radio button
         - for dropdown there is a log row and value is corresponded to the selected value.
         */
-        List<String> logRowsExpected = Arrays.asList(
-                "Water: condition changed to true",
-                "Wind: condition changed to true",
+        List<String> expectedLogRows = List.of(
+                "Colors: value changed to Yellow",
                 "metal: value changed to Selen",
-                "Colors: value changed to Yellow"
+                "Wind: condition changed to true",
+                "Water: condition changed to true"
         );
 
-        differentElementsPageObject.rightSideBar()
-                .logsList()
-                .stream()
-                .map(WebElement::getText)
-                .map(text -> text.replaceAll("^\\d*[:]\\d*[:]\\d*\\s", ""))
-                .forEach(text -> assertThat(text).isIn(logRowsExpected));
-
-
-
+        assertThat(differentElementsPageObject.rightSideBar().logsList())
+                .containsExactlyElementsOf(expectedLogRows);
 
 
     }

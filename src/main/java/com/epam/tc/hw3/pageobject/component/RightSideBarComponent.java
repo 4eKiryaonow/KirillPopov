@@ -1,6 +1,7 @@
 package com.epam.tc.hw3.pageobject.component;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,7 +10,7 @@ import org.openqa.selenium.support.FindBy;
 public class RightSideBarComponent extends AbstractBaseComponent {
 
     @FindBy(css = ".logs > li")
-    private WebElement logPanel;
+    private List<WebElement> logPanel;
 
     public RightSideBarComponent(WebDriver driver) {
 
@@ -17,9 +18,13 @@ public class RightSideBarComponent extends AbstractBaseComponent {
 
     }
 
-    public List<WebElement> logsList() {
+    public List<String> logsList() {
 
-        return logPanel.findElements(By.tagName("li"));
+        return logPanel
+                .stream()
+                .map(WebElement::getText)
+                .map(text -> text.replaceAll("^\\d*[:]\\d*[:]\\d*\\s", "").trim())
+                .collect(Collectors.toList());
 
     }
 }
