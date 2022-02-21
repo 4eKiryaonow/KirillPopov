@@ -1,21 +1,25 @@
 package com.epam.tc.hw3.pageobject;
 
 import java.util.List;
-import org.openqa.selenium.By;
+import java.util.stream.Collectors;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HomePageObject extends AbstractPageObject {
 
-    @FindBy(xpath = "//div[contains(@class, 'benefits')]//span[contains(@class, 'icons-benefit')]")
+    @FindBy(css = "div.benefit-icon > span.icons-benefit")
     private List<WebElement> listImages;
 
-    @FindBy(xpath = "//div[contains(@class, 'benefits')]//span[contains(@class, 'benefit-txt')]")
+    @FindBy(className = "benefit-txt")
     private List<WebElement> listTextUnderImages;
 
-    @FindBy(xpath = "//iframe[@id='frame']")
-    private WebElement frameButton;
+    @FindBy(id = "frame")
+    private List<WebElement> frameWithButton;
+
+    @FindBy(id = "frame-button")
+    private List<WebElement> frameButton;
 
     public HomePageObject(WebDriver driver) {
 
@@ -33,35 +37,38 @@ public class HomePageObject extends AbstractPageObject {
 
     }
 
-    public List<WebElement> getListTextUnderImages() {
+    public List<String> getListTextUnderImages() {
 
-        return this.listTextUnderImages;
+        return listTextUnderImages
+                .stream()
+                .map(WebElement::getText)
+                .collect(Collectors.toList());
     }
 
 
-    public WebElement getFrameButton() {
+    public List<WebElement> getFrameWithButton() {
+
+        return this.frameWithButton;
+    }
+
+    public List<WebElement> getButtonFromFrameButton() {
 
         return this.frameButton;
+
+
     }
 
-    public WebElement getButtonFromFrameButton() {
+    public void switchToFrameButton() {
 
-        return driver.switchTo()
-                .frame(this.getFrameButton()).findElement(By.id("frame-button"));
-
-
+        driver.switchTo().frame(this.frameWithButton.get(0));
     }
 
     public void switchToWindowBack() {
 
-        driver.switchTo().parentFrame();
+        driver.switchTo().defaultContent();
+        wait.until(ExpectedConditions.titleIs(this.getTitle()));
+
     }
-
-
-
-
-
-
 
 
 }
