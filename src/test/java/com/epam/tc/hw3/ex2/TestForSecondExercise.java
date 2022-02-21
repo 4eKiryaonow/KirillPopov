@@ -2,8 +2,8 @@ package com.epam.tc.hw3.ex2;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.epam.tc.hw3.BaseClassTest;
 import com.epam.tc.hw3.PropertiesReader;
+import com.epam.tc.hw3.SeleniumBaseClass;
 import com.epam.tc.hw3.pageobject.DifferentElementsPageObject;
 import com.epam.tc.hw3.pageobject.HomePageObject;
 import java.util.Arrays;
@@ -14,7 +14,7 @@ import org.testng.asserts.SoftAssert;
 
 
 
-public class TestForSecondExercise extends BaseClassTest {
+public class TestForSecondExercise extends SeleniumBaseClass {
 
     @Test
     public void testForSecondExercise() {
