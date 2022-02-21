@@ -19,11 +19,10 @@ public class TestForSecondExercise extends SeleniumBaseClass {
     @Test
     public void testForSecondExercise() {
 
-        SoftAssert softAssert = new SoftAssert();
         HomePageObject homePageObject = new HomePageObject(driver);
 
         //Step 2. Assert Browser title
-        softAssert.assertEquals(homePageObject.getTitle(), "Home Page");
+        assertThat(homePageObject.getTitle()).isEqualTo("Home Page");
 
         //Step 3. Perform login
         homePageObject.header()

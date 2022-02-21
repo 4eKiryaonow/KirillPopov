@@ -9,16 +9,16 @@ import org.openqa.selenium.support.ui.Select;
 
 public class DifferentElementsPageObject extends AbstractPageObject {
 
-    @FindBy(xpath = "//*[text()[contains(.,'Water')]]/child::input")
+    @FindBy(xpath = "//div[@class='checkbox-row']/label[contains(., 'Water')]/input")
     private WebElement checkBoxWater;
 
-    @FindBy(xpath = "//*[text()[contains(.,'Wind')]]/child::input")
+    @FindBy(xpath = "//div[@class='checkbox-row']/label[contains(., 'Wind')]/input")
     private WebElement checkBoxWind;
 
-    @FindBy(xpath = "//*[text()[contains(.,'Selen')]]/child::input")
+    @FindBy(xpath = "//div[@class='checkbox-row']/label[contains(., 'Selen')]/input")
     private WebElement radioSelen;
 
-    @FindBy(xpath = "//*[@class='colors']/select")
+    @FindBy(css = ".colors > select")
     private WebElement dropDownColors;
 
     public DifferentElementsPageObject(WebDriver driver) {

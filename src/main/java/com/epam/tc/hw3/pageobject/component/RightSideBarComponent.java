@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class RightSideBarComponent extends AbstractBaseComponent {
 
-    @FindBy(className = "logs")
+    @FindBy(css = ".logs > li")
     private WebElement logPanel;
 
     public RightSideBarComponent(WebDriver driver) {

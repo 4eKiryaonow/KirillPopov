@@ -25,7 +25,7 @@ public class HeaderPageComponent extends AbstractBaseComponent {
     @FindBy(id = "user-name")
     private WebElement loggedUser;
 
-    @FindBy(xpath = "//ul[contains(@class, 'm-l8')]/li")
+    @FindBy(css = ".m-l8 > li")
     private List<WebElement> navigationMenu;
 
     @FindBy(className = "dropdown")
@@ -72,7 +72,8 @@ public class HeaderPageComponent extends AbstractBaseComponent {
 
         this.clickByServiceDropDownMenu();
         wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//*[text()='Different elements']"))).click();
+                By.xpath("//ul[contains(@class, 'm-l8')]/descendant::ul/descendant::*[text()='Different elements']")))
+                .click();
 
     }
 
