@@ -145,6 +145,16 @@
                 <testng.suite.file>${testng.configs.path}/TestNG.xml</testng.suite.file>
             </properties>
 
+<<<<<<< HEAD
+=======
+        </profile>
+
+        <profile>
+            <id>ThirdHomework</id>
+            <properties>
+            <testng.suite.file>${testng.configs.path}/ThirdHomeWorkTestNG.xml</testng.suite.file>
+            </properties>
+>>>>>>> bd2570d (Changes after fixing HW2)
         </profile>
     </profiles>
 

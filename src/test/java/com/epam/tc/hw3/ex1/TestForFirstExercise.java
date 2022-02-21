@@ -1,7 +1,7 @@
 package com.epam.tc.hw3.ex1;
 
-import com.epam.tc.hw3.BaseClassTest;
 import com.epam.tc.hw3.PropertiesReader;
+import com.epam.tc.hw3.SeleniumBaseClass;
 import com.epam.tc.hw3.pageobject.HomePageObject;
 import java.util.Arrays;
 import java.util.List;
@@ -11,7 +11,7 @@ import org.testng.asserts.SoftAssert;
 
 
 
-public class TestForFirstExercise extends BaseClassTest {
+public class TestForFirstExercise extends SeleniumBaseClass {
 
 
 
