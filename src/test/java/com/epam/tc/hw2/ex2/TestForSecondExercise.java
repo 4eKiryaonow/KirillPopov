@@ -68,7 +68,7 @@ public class TestForSecondExercise extends SeleniumBaseClass {
 
         //8. Select in dropdown Yellow
         Select dropDown = new Select(wait.until(ExpectedConditions.elementToBeClickable(
-                driver.findElement(By.xpath("//*[@class='colors']/select")))));
+                driver.findElement(By.cssSelector(".colors > select")))));
         dropDown.selectByVisibleText("Yellow");
 
         /* 9. Assert that:
@@ -76,8 +76,7 @@ public class TestForSecondExercise extends SeleniumBaseClass {
         - for radio button there is a log row and value is corresponded to the status of radio button
         - for dropdown there is a log row and value is corresponded to the selected value.
         */
-        List<WebElement> logRows = wait.until(
-                ExpectedConditions.numberOfElementsToBeMoreThan(By.cssSelector(".logs > li"), 3));
+        List<WebElement> logRows = driver.findElements(By.cssSelector(".logs > li"));
 
         List<String> actualLogRows = logRows
                 .stream()
@@ -85,7 +84,7 @@ public class TestForSecondExercise extends SeleniumBaseClass {
                 .map(text -> text.replaceAll("^\\d*[:]\\d*[:]\\d*\\s", "").trim())
                 .collect(Collectors.toList());
 
-        List<String> expectedLogRows = newArrayList(
+        List<String> expectedLogRows = List.of(
                 "Colors: value changed to Yellow",
                 "metal: value changed to Selen",
                 "Wind: condition changed to true",

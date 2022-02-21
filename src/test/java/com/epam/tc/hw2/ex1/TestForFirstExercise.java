@@ -45,7 +45,7 @@ public class TestForFirstExercise extends SeleniumBaseClass {
         List<WebElement> findHeaderItems = wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(
                 By.cssSelector(".m-l8 > li"), 3));
 
-        List<String> expectedHeaderItems = newArrayList(
+        List<String> expectedHeaderItems = List.of(
                 "HOME",
                 "CONTACT FORM",
                 "SERVICE",
@@ -59,7 +59,7 @@ public class TestForFirstExercise extends SeleniumBaseClass {
         //6. Assert that there are 4 images on the Index Page and they are displayed
         List<WebElement> imageItems = wait.until(
                 ExpectedConditions.numberOfElementsToBeMoreThan(
-                By.cssSelector("div[class*=benefit] > span[class*=icons-benefit]"), 3));
+                By.cssSelector("div.benefit-icon > span.icons-benefit"), 3));
 
         softly.assertThat(imageItems).hasSize(4).allMatch(WebElement::isDisplayed);
 
@@ -67,7 +67,7 @@ public class TestForFirstExercise extends SeleniumBaseClass {
         List<WebElement> textUnderImage = wait.until(
                 ExpectedConditions.numberOfElementsToBeMoreThan(By.className("benefit-txt"), 3));
 
-        List<String> expectedTextUnderImages = newArrayList(
+        List<String> expectedTextUnderImages = List.of(
                 "To include good practices\nand ideas from successful\nEPAM project",
                 "To be flexible and\ncustomizable",
                 "To be multiplatform",
@@ -79,11 +79,11 @@ public class TestForFirstExercise extends SeleniumBaseClass {
                 .containsExactlyElementsOf(expectedTextUnderImages);
 
         //8. Assert that there is the iframe with “Frame Button” exist
-        softly.assertThat(driver.findElement(By.id("frame")).isDisplayed()).isTrue();
+        softly.assertThat(driver.findElements(By.id("frame")).size() != 0).isTrue();
 
         //9. Switch to the iframe and check that there is “Frame Button” in the iframe
         driver.switchTo().frame("frame");
-        softly.assertThat(driver.findElement(By.id("frame-button")).isDisplayed()).isTrue();
+        softly.assertThat(driver.findElements(By.id("frame-button")).size() != 0).isTrue();
 
         //10. Switch to original window back
         driver.switchTo().defaultContent();
@@ -93,7 +93,7 @@ public class TestForFirstExercise extends SeleniumBaseClass {
         List<WebElement> findLeftBar = wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(
                 By.cssSelector(".left > li"), 4));
 
-        List<String> expectedItemsLeftBar = newArrayList(
+        List<String> expectedItemsLeftBar = List.of(
                 "Home",
                 "Contact form",
                 "Service",
