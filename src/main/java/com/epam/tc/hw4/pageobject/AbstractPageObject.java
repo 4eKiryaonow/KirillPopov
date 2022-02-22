@@ -8,7 +8,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-
 public abstract class AbstractPageObject {
 
     protected WebDriver driver;
@@ -17,6 +16,7 @@ public abstract class AbstractPageObject {
     protected HeaderPageComponent header;
     protected LeftSideBarComponent leftSideBar;
     protected RightSideBarComponent rightSideBar;
+    protected String url;
 
     protected AbstractPageObject(WebDriver driver) {
         this.driver = driver;
@@ -26,13 +26,11 @@ public abstract class AbstractPageObject {
         header = new HeaderPageComponent(driver);
         leftSideBar = new LeftSideBarComponent(driver);
         rightSideBar = new RightSideBarComponent(driver);
-
     }
 
     public String getTitle() {
         return this.title;
     }
-
 
     public HeaderPageComponent header() {
         return this.header;
@@ -46,5 +44,10 @@ public abstract class AbstractPageObject {
     public RightSideBarComponent rightSideBar() {
 
         return this.rightSideBar;
+    }
+
+    protected void open(String url) {
+
+        driver.navigate().to(url);
     }
 }

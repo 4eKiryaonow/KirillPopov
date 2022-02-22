@@ -64,4 +64,9 @@ public class HomePageObject extends AbstractPageObject {
         driver.switchTo().defaultContent();
         wait.until(ExpectedConditions.titleIs(this.getTitle()));
     }
+
+    public void open(String url) {
+
+        driver.navigate().to(url);
+    }
 }
