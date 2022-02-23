@@ -1,9 +1,1 @@
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-
-<suite name="Run all tests">
-  <test name="All tests">
-    <packages>
-      <package name="com.epam.tc.hw1"/>
-    </packages>
-  </test>
-</suite>
+v

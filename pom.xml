@@ -22,6 +22,12 @@
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <testng.suite.file>${testng.configs.path}/testNG.xml</testng.suite.file>
         <testng.configs.path>${project.build.testOutputDirectory}</testng.configs.path>
+        <slf4j-api.version>1.7.32</slf4j-api.version>
+        <lombok.version>1.18.22</lombok.version>
+        <allure-testng.version>2.17.2</allure-testng.version>
+        <commons-io.version>2.11.0</commons-io.version>
+        <aspectjweaver.version>1.9.7</aspectjweaver.version>
+        <aspectj.version>${aspectjweaver.version}</aspectj.version>
     </properties>
 
     <dependencies>
@@ -47,6 +53,26 @@
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>${webdrivermanager.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure-testng.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
         </dependency>
     </dependencies>
 
@@ -99,10 +125,20 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
                     <suiteXmlFiles>
                         <suiteXmlFile>${testng.suite.file}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
 
 
@@ -154,6 +190,24 @@
             </properties>
 
         </profile>
+
+        <profile>
+            <id>FourthHomework</id>
+            <properties>
+                <testng.suite.file>${testng.configs.path}/FourthHomeworkTestNG</testng.suite.file>
+            </properties>
+        </profile>
     </profiles>
+
+    <reporting>
+        <excludeDefaults>true</excludeDefaults>
+        <plugins>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure</artifactId>
+                <version>2.10.0</version>
+            </plugin>
+        </plugins>
+    </reporting>
 
 </project>
