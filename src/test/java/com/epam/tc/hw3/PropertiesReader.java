@@ -2,8 +2,10 @@ package com.epam.tc.hw3;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
+import org.asynchttpclient.filter.FilterException;
 
 public class PropertiesReader {
 
@@ -15,11 +17,12 @@ public class PropertiesReader {
             PROPERTIES = new Properties();
             PROPERTIES.load(fileInputStream);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
     public static String getProperty(String key) {
+
         return PROPERTIES.getProperty(key);
     }
 }
