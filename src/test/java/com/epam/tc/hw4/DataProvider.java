@@ -4,12 +4,22 @@ import java.util.List;
 
 public class DataProvider {
 
-    private String username = PropertiesReader.getProperty("username");
-    private String password = PropertiesReader.getProperty("password");
-    private String userLogged = PropertiesReader.getProperty("userLogged");
-    private String title = PropertiesReader.getProperty("title");
-    private String url = PropertiesReader.getProperty("url");
-    private String color = PropertiesReader.getProperty("color");
+    private String username;
+    private String password;
+    private String userLogged;
+    private String title;
+    private String url;
+    private String color;
+
+    public DataProvider() {
+
+        this.username = PropertiesReader.getProperty("username");
+        this.password = PropertiesReader.getProperty("password");
+        this.userLogged = PropertiesReader.getProperty("userLogged");
+        this.title = PropertiesReader.getProperty("title");
+        this.url = PropertiesReader.getProperty("url");
+        this.color = PropertiesReader.getProperty("color");
+    }
 
     private List<String> expectedHeaderItems = List.of(
         "HOME",
