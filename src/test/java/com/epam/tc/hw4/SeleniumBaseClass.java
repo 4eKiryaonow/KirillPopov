@@ -1,5 +1,7 @@
 package com.epam.tc.hw4;
 
+import com.epam.tc.hw4.steps.ActionStep;
+import com.epam.tc.hw4.steps.AssertionStep;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.time.Duration;
 import org.openqa.selenium.WebDriver;
@@ -15,14 +17,15 @@ public abstract class SeleniumBaseClass {
     protected WebDriverWait wait;
     protected ChromeOptions options;
 
+
     @BeforeMethod
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         options = new ChromeOptions();
         options.addArguments("start-maximized");
         driver = new ChromeDriver(options);
-        //set Explicity
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
     }
 
     @AfterMethod

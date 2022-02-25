@@ -21,7 +21,9 @@ public abstract class AbstractPageObject {
     protected AbstractPageObject(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        this.title = this.driver.getTitle();
+        header = new HeaderPageComponent(driver);
+        leftSideBar = new LeftSideBarComponent(driver);
+        rightSideBar = new RightSideBarComponent(driver);
         PageFactory.initElements(this.driver, this);
         header = new HeaderPageComponent(driver);
         leftSideBar = new LeftSideBarComponent(driver);
@@ -29,7 +31,7 @@ public abstract class AbstractPageObject {
     }
 
     public String getTitle() {
-        return this.title;
+        return driver.getTitle();
     }
 
     public HeaderPageComponent header() {

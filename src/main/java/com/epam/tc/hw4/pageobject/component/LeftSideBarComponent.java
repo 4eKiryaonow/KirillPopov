@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 public class LeftSideBarComponent extends AbstractBaseComponent {
 
     @FindBy(css = ".left > li")
-    List<WebElement> leftSideBarMenu;
+    private List<WebElement> leftSideBarMenu;
 
     public LeftSideBarComponent(WebDriver driver) {
 
