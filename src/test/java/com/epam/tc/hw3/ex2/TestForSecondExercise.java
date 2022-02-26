@@ -2,33 +2,29 @@ package com.epam.tc.hw3.ex2;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.epam.tc.hw3.DataProvider;
-import com.epam.tc.hw3.PropertiesReader;
+import com.epam.tc.hw3.DataProviderForTests;
 import com.epam.tc.hw3.SeleniumBaseClass;
+import com.epam.tc.hw3.TestData;
 import com.epam.tc.hw3.pageobject.DifferentElementsPageObject;
 import com.epam.tc.hw3.pageobject.HomePageObject;
-import java.util.Arrays;
-import java.util.List;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
 public class TestForSecondExercise extends SeleniumBaseClass {
 
-    @Test
-    public void testForSecondExercise() {
+    @Test(dataProviderClass = DataProviderForTests.class,
+          dataProvider = "DataProviderForTests")
+    public void testForSecondExercise(TestData data) {
 
-        DataProvider dataProvider = new DataProvider();
         HomePageObject homePageObject = new HomePageObject(driver);
 
         //Step 2. Assert Browser title
-        assertThat(homePageObject.getTitle()).isEqualTo(dataProvider.getTitle());
+        assertThat(homePageObject.getTitle()).isEqualTo(data.getTitle());
 
         //Step 3. Perform login
-        homePageObject.header().login(dataProvider.getUsername(), dataProvider.getPassword());
+        homePageObject.header().login(data.getUsername(), data.getPassword());
 
         //4. Assert Username is loggined
-        assertThat(homePageObject.getLoggedUserAsText()).isEqualTo(dataProvider.getUserLogged());
+        assertThat(homePageObject.getLoggedUserAsText()).isEqualTo(data.getUserLogged());
 
         //5. Open through the header menu Service -> Different Elements Page
         homePageObject.header().clickByDifferentElements();
@@ -43,7 +39,7 @@ public class TestForSecondExercise extends SeleniumBaseClass {
         differentElementsPageObject.clickRadioSelen();
 
         //8. Select in dropdown Yellow
-        differentElementsPageObject.selectColor(dataProvider.getColor());
+        differentElementsPageObject.selectColor(data.getColor());
 
         /* 9. Assert that:
         - for each checkbox there is an individual log row and value is corresponded to the status of checkbox
@@ -52,6 +48,6 @@ public class TestForSecondExercise extends SeleniumBaseClass {
         */
 
         assertThat(differentElementsPageObject.rightSideBar().logsList())
-            .containsExactlyElementsOf(dataProvider.getExpectedLogRows());
+            .containsExactlyElementsOf(data.getExpectedLogRows());
     }
 }

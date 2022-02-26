@@ -23,7 +23,7 @@ public abstract class SeleniumBaseClass {
         options.addArguments("start-maximized");
         driver = new ChromeDriver(options);
         //Step 1. Open test site by URL
-        driver.get(PropertiesReader.getProperty("url"));
+        driver.navigate().to(PropertiesReader.getProperty("url"));
         //set Explicity
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }

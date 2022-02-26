@@ -2,14 +2,14 @@ package com.epam.tc.hw3;
 
 import java.util.List;
 
-public class DataProvider {
+public class TestData {
 
-    private String username = PropertiesReader.getProperty("username");
-    private String password = PropertiesReader.getProperty("password");
-    private String userLogged = PropertiesReader.getProperty("userLogged");
-    private String title = PropertiesReader.getProperty("title");
-    private String url = PropertiesReader.getProperty("url");
-    private String color = PropertiesReader.getProperty("color");
+    private String username;
+    private String password;
+    private String userLogged;
+    private String title;
+    private String url;
+    private String color;
 
     private List<String> expectedHeaderItems = List.of(
         "HOME",
@@ -78,5 +78,29 @@ public class DataProvider {
 
     public List<String> getExpectedLogRows() {
         return expectedLogRows;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setUserLogged(String userLogged) {
+        this.userLogged = userLogged;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 }

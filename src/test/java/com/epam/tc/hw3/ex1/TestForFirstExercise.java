@@ -1,48 +1,45 @@
 package com.epam.tc.hw3.ex1;
 
-import com.epam.tc.hw3.DataProvider;
+import com.epam.tc.hw3.DataProviderForTests;
 import com.epam.tc.hw3.PropertiesReader;
 import com.epam.tc.hw3.SeleniumBaseClass;
+import com.epam.tc.hw3.TestData;
 import com.epam.tc.hw3.pageobject.HomePageObject;
-import java.util.Arrays;
-import java.util.List;
-import org.assertj.core.api.Assertions;
 import org.assertj.core.api.SoftAssertions;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
 public class TestForFirstExercise extends SeleniumBaseClass {
 
-    @Test
-    public void testForFirstExercise() {
+    @Test(dataProviderClass = DataProviderForTests.class,
+          dataProvider = "DataProviderForTests")
+    public void testForFirstExercise(TestData data) {
         SoftAssertions softly = new SoftAssertions();
         HomePageObject homePageObject = new HomePageObject(driver);
-        DataProvider dataProvider = new DataProvider();
 
         //Step 2. Assert Browser title
-        softly.assertThat(homePageObject.getTitle()).isEqualTo(dataProvider.getTitle());
+        softly.assertThat(homePageObject.getTitle()).isEqualTo(data.getTitle());
 
         //Step 3. Perform login
         homePageObject.header()
-                      .login(dataProvider.getUsername(),
-                          dataProvider.getPassword());
+                      .login(data.getUsername(),
+                          data.getPassword());
 
         //4. Assert Username is loggined
-        softly.assertThat(homePageObject.getLoggedUserAsText()).isEqualTo(dataProvider.getUserLogged());
+        softly.assertThat(homePageObject.getLoggedUserAsText()).isEqualTo(data.getUserLogged());
 
         //5. Assert that there are 4 items on the header section are displayed and they have proper text
         softly.assertThat(homePageObject.header().getTitlesNavigationMenu())
-              .containsExactlyElementsOf(dataProvider.getExpectedHeaderItems());
+              .containsExactlyElementsOf(data.getExpectedHeaderItems());
 
         //6. Assert that there are 4 images on the Index Page and they are displayed
         softly.assertThat(homePageObject.getListImages())
-              .hasSize(dataProvider.getExpectedTextUnderImages().size()).allMatch(WebElement::isDisplayed);
+              .hasSize(data.getExpectedTextUnderImages().size()).allMatch(WebElement::isDisplayed);
 
         //7. Assert that there are 4 texts on the Index Page under icons and they have proper text
         softly.assertThat(homePageObject.getListTextUnderImages())
-              .containsExactlyElementsOf(dataProvider.getExpectedTextUnderImages());
+              .containsExactlyElementsOf(data.getExpectedTextUnderImages());
 
         //8. Assert that there is the iframe with “Frame Button” exist
         softly.assertThat(homePageObject.getFrameWithButton()).isNotEmpty();
@@ -56,9 +53,8 @@ public class TestForFirstExercise extends SeleniumBaseClass {
 
         //11. Assert that there are 5 items in the Left Section are displayed and they have proper text
 
-
         softly.assertThat(homePageObject.leftSideBar().getTitlesLeftMenu())
-              .containsExactlyElementsOf(dataProvider.getExpectedItemsLeftBar());
+              .containsExactlyElementsOf(data.getExpectedItemsLeftBar());
 
         softly.assertAll();
     }
