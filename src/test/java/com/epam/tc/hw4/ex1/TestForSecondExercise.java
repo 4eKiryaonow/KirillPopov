@@ -1,15 +1,18 @@
-package com.epam.tc.hw4.ex1;
+package com.epam.tc.hw4.ex2;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.epam.tc.hw4.DataProvider;
 import com.epam.tc.hw4.SeleniumBaseClass;
-import com.epam.tc.hw4.pageobject.DifferentElementsPageObject;
 import com.epam.tc.hw4.pageobject.HomePageObject;
 import com.epam.tc.hw4.steps.ActionStep;
 import com.epam.tc.hw4.steps.AssertionStep;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 
+@Feature("Homework 4")
+@Story("Exercise 2 test")
 public class TestForSecondExercise extends SeleniumBaseClass {
 
     @Test
