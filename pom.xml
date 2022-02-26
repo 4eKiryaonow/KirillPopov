@@ -146,6 +146,14 @@
             </properties>
 
         </profile>
+
+        <profile>
+            <id>ThirdHomework</id>
+            <properties>
+            <testng.suite.file>${testng.configs.path}/ThirdHomeWorkTestNG.xml</testng.suite.file>
+            </properties>
+
+        </profile>
     </profiles>
 
 </project>

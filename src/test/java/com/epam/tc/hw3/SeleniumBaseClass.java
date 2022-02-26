@@ -1,5 +1,6 @@
-package com.epam.tc.hw2;
+package com.epam.tc.hw3;
 
+import com.epam.tc.hw3.pageobject.AbstractPageObject;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.time.Duration;
 import org.openqa.selenium.WebDriver;
@@ -22,16 +23,14 @@ public abstract class SeleniumBaseClass {
         options.addArguments("start-maximized");
         driver = new ChromeDriver(options);
         //Step 1. Open test site by URL
-        driver.get("https://jdi-testing.github.io/jdi-light/index.html");
+        driver.navigate().to(PropertiesReader.getProperty("url"));
         //set Explicity
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
     }
 
     @AfterMethod
     public void tearDown() {
         //12. Close Browser
         driver.quit();
-
     }
 }
