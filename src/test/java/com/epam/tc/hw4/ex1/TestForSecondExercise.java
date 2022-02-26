@@ -1,6 +1,4 @@
-package com.epam.tc.hw4.ex2;
-
-import static org.assertj.core.api.Assertions.assertThat;
+package com.epam.tc.hw4.ex1;
 
 import com.epam.tc.hw4.DataProvider;
 import com.epam.tc.hw4.SeleniumBaseClass;
@@ -12,7 +10,7 @@ import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 
 @Feature("Homework 4")
-@Story("Exercise 2 test")
+@Story("Test for second exercise")
 public class TestForSecondExercise extends SeleniumBaseClass {
 
     @Test

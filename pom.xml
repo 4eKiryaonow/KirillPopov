@@ -21,13 +21,13 @@
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <testng.suite.file>${testng.configs.path}/testNG.xml</testng.suite.file>
-        <testng.configs.path>${project.basedir}/src/test/resources</testng.configs.path>
-        <slf4j-api.version>1.7.35</slf4j-api.version>
+        <testng.configs.path>${project.build.testOutputDirectory}</testng.configs.path>
         <lombok.version>1.18.22</lombok.version>
         <allure-testng.version>2.17.2</allure-testng.version>
         <commons-io.version>2.11.0</commons-io.version>
         <aspectj.version>1.9.7</aspectj.version>
         <allure-maven.version>2.11.2</allure-maven.version>
+        <slf4j-simple.version>1.7.35</slf4j-simple.version>
     </properties>
 
     <dependencies>
@@ -56,8 +56,8 @@
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j-api.version}</version>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j-simple.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
