@@ -10,8 +10,6 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 
-@Feature("Homework 4")
-@Story("Test for first exercise")
 public class TestForFirstExercise extends SeleniumBaseClass {
 
     @Test(dataProviderClass = DataProviderForTests.class,

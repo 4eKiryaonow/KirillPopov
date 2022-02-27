@@ -10,7 +10,6 @@ import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.DataProvider;
 
 public abstract class SeleniumBaseClass {
 
@@ -19,16 +18,18 @@ public abstract class SeleniumBaseClass {
     protected WebDriverWait wait;
     protected ChromeOptions options;
 
-    @BeforeMethod()
-    public void setUp(ITestContext context) {
+    @BeforeMethod
+    public void setUp(Object[] data, ITestContext context) {
+
         WebDriverManager.chromedriver().setup();
         options = new ChromeOptions();
         options.addArguments("start-maximized");
         options.addArguments("--disable-dev-shm-usage");
         driver = new ChromeDriver(options);
-        driver.navigate().to(new TestData().getUrl());
-        context.setAttribute("driver", driver);
         wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT_SECONDS));
+        driver.navigate().to(((TestData) data[0]).getUrl());
+        context.setAttribute("driver", driver);
+
 
     }
 

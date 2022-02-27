@@ -10,7 +10,8 @@ public class PropertiesReader {
     protected static Properties PROPERTIES;
 
     static {
-        try (FileInputStream fileInputStream = new FileInputStream("src/test/resources/config.properties")) {
+        try (InputStream fileInputStream =
+            PropertiesReader.class.getClassLoader().getResourceAsStream("config.properties")) {
 
             PROPERTIES = new Properties();
             PROPERTIES.load(fileInputStream);
