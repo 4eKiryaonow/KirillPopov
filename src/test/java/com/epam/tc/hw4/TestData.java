@@ -2,7 +2,7 @@ package com.epam.tc.hw4;
 
 import java.util.List;
 
-public class DataProvider {
+public class TestData {
 
     private String username;
     private String password;
@@ -10,16 +10,6 @@ public class DataProvider {
     private String title;
     private String url;
     private String color;
-
-    public DataProvider() {
-
-        this.username = PropertiesReader.getProperty("username");
-        this.password = PropertiesReader.getProperty("password");
-        this.userLogged = PropertiesReader.getProperty("userLogged");
-        this.title = PropertiesReader.getProperty("title");
-        this.url = PropertiesReader.getProperty("url");
-        this.color = PropertiesReader.getProperty("color");
-    }
 
     private List<String> expectedHeaderItems = List.of(
         "HOME",
@@ -88,5 +78,29 @@ public class DataProvider {
 
     public List<String> getExpectedLogRows() {
         return expectedLogRows;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setUserLogged(String userLogged) {
+        this.userLogged = userLogged;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 }

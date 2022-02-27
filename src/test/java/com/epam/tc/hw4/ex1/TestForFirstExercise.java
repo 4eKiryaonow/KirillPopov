@@ -1,7 +1,8 @@
 package com.epam.tc.hw4.ex1;
 
-import com.epam.tc.hw4.DataProvider;
+import com.epam.tc.hw4.DataProviderForTests;
 import com.epam.tc.hw4.SeleniumBaseClass;
+import com.epam.tc.hw4.TestData;
 import com.epam.tc.hw4.pageobject.HomePageObject;
 import com.epam.tc.hw4.steps.ActionStep;
 import com.epam.tc.hw4.steps.AssertionStep;
@@ -13,33 +14,30 @@ import org.testng.annotations.Test;
 @Story("Test for first exercise")
 public class TestForFirstExercise extends SeleniumBaseClass {
 
-    @Test
-    public void testForFirstExercise() {
+    @Test(dataProviderClass = DataProviderForTests.class,
+          dataProvider = "DataProviderForTests")
+    public void testForFirstExercise(TestData data) {
         HomePageObject homePageObject = new HomePageObject(driver);
-        DataProvider dataProvider = new DataProvider();
         ActionStep actionStep = new ActionStep(driver, wait, homePageObject);
         AssertionStep assertionStep = new AssertionStep(driver, wait, homePageObject);
 
-        //Step 1. Open test site by URL
-        actionStep.openHomePage();
-
         //Step 2. Assert Browser title
-        assertionStep.assertBrowserTitle(dataProvider.getTitle());
+        assertionStep.assertBrowserTitle(data.getTitle());
 
         //Step 3. Perform login
-        actionStep.performLogin();
+        actionStep.performLogin(data.getUsername(), data.getPassword());
 
         //4. Assert Username is loggined
-        assertionStep.assertUsernameIsLoggined(dataProvider.getUserLogged());
+        assertionStep.assertUsernameIsLoggined(data.getUserLogged());
 
         //5. Assert that there are 4 items on the header section are displayed and they have proper text
-        assertionStep.assertItemsOnHeader(dataProvider.getExpectedHeaderItems());
+        assertionStep.assertItemsOnHeader(data.getExpectedHeaderItems());
 
         //6. Assert that there are 4 images on the Index Page and they are displayed
-        assertionStep.assertImagesAreDisplayed(dataProvider.getExpectedTextUnderImages());
+        assertionStep.assertImagesAreDisplayed(data.getExpectedTextUnderImages());
 
         //7. Assert that there are 4 texts on the Index Page under icons and they have proper text
-        assertionStep.assertTextUnderImages(dataProvider.getExpectedTextUnderImages());
+        assertionStep.assertTextUnderImages(data.getExpectedTextUnderImages());
 
         //8. Assert that there is the iframe with “Frame Button” exist
         assertionStep.assertFrameIsExist();
@@ -51,8 +49,6 @@ public class TestForFirstExercise extends SeleniumBaseClass {
         actionStep.switchToOriginalWindowBack();
 
         //11. Assert that there are 5 items in the Left Section are displayed and they have proper text
-        assertionStep.assertItemsInLeftLogSection(dataProvider.getExpectedItemsLeftBar());
-
-
+        assertionStep.assertItemsInLeftLogSection(data.getExpectedItemsLeftBar());
     }
 }

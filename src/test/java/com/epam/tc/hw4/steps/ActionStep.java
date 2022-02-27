@@ -1,6 +1,5 @@
 package com.epam.tc.hw4.steps;
 
-import com.epam.tc.hw4.DataProvider;
 import com.epam.tc.hw4.pageobject.DifferentElementsPageObject;
 import com.epam.tc.hw4.pageobject.HomePageObject;
 import io.qameta.allure.Step;
@@ -10,24 +9,17 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class ActionStep extends AbstractStep {
 
     private DifferentElementsPageObject differentElementsPageObject;
-    private DataProvider dataProvider;
 
     public ActionStep(WebDriver driver, WebDriverWait wait, HomePageObject homePageObject) {
         super(driver, wait, homePageObject);
         differentElementsPageObject = new DifferentElementsPageObject(driver);
-        dataProvider = new DataProvider();
-    }
 
-    @Step("Open test site by URL")
-    public void openHomePage() {
-        homePageObject.open(dataProvider.getUrl());
     }
 
     @Step("Perform login")
-    public void performLogin() {
+    public void performLogin(String login, String password) {
         homePageObject.header()
-                      .login(dataProvider.getUsername(),
-                          dataProvider.getPassword());
+                      .login(login, password);
     }
 
     @Step("Switch to original window back")
