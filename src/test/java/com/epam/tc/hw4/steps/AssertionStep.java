@@ -2,7 +2,6 @@ package com.epam.tc.hw4.steps;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.epam.tc.hw4.DataProvider;
 import com.epam.tc.hw4.pageobject.DifferentElementsPageObject;
 import com.epam.tc.hw4.pageobject.HomePageObject;
 import io.qameta.allure.Step;

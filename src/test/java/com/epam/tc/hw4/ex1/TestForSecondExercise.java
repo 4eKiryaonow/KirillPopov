@@ -1,7 +1,8 @@
 package com.epam.tc.hw4.ex1;
 
-import com.epam.tc.hw4.DataProvider;
+import com.epam.tc.hw4.DataProviderForTests;
 import com.epam.tc.hw4.SeleniumBaseClass;
+import com.epam.tc.hw4.TestData;
 import com.epam.tc.hw4.pageobject.HomePageObject;
 import com.epam.tc.hw4.steps.ActionStep;
 import com.epam.tc.hw4.steps.AssertionStep;
@@ -13,24 +14,21 @@ import org.testng.annotations.Test;
 @Story("Test for second exercise")
 public class TestForSecondExercise extends SeleniumBaseClass {
 
-    @Test
-    public void testForSecondExercise() {
+    @Test(dataProviderClass = DataProviderForTests.class,
+          dataProvider = "DataProviderForTests")
+    public void testForSecondExercise(TestData data) {
         HomePageObject homePageObject = new HomePageObject(driver);
-        DataProvider dataProvider = new DataProvider();
         ActionStep actionStep = new ActionStep(driver, wait, homePageObject);
         AssertionStep assertionStep = new AssertionStep(driver, wait, homePageObject);
 
-        //Step 1. Open test site by URL
-        actionStep.openHomePage();
-
         //Step 2. Assert Browser title
-        assertionStep.assertBrowserTitle(dataProvider.getTitle());
+        assertionStep.assertBrowserTitle(data.getTitle());
 
         //Step 3. Perform login
-        actionStep.performLogin();
+        actionStep.performLogin(data.getUsername(), data.getPassword());
 
         //4. Assert Username is loggined
-        assertionStep.assertUsernameIsLoggined(dataProvider.getUserLogged());
+        assertionStep.assertUsernameIsLoggined(data.getUserLogged());
 
         //5. Open through the header menu Service -> Different Elements Page
         actionStep.openDifferentElementsPage();
@@ -42,13 +40,13 @@ public class TestForSecondExercise extends SeleniumBaseClass {
         actionStep.selectRadio();
 
         //8. Select in dropdown Yellow
-        actionStep.selectColor(dataProvider.getColor());
+        actionStep.selectColor(data.getColor());
 
         /* 9. Assert that:
         - for each checkbox there is an individual log row and value is corresponded to the status of checkbox
         - for radio button there is a log row and value is corresponded to the status of radio button
         - for dropdown there is a log row and value is corresponded to the selected value.
         */
-        assertionStep.assertLogRowsInRightSideSection(dataProvider.getExpectedLogRows());
+        assertionStep.assertLogRowsInRightSideSection(data.getExpectedLogRows());
     }
 }
