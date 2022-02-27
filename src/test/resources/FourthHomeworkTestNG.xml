@@ -6,16 +6,17 @@
     <listener class-name="com.epam.tc.hw4.listeners.ScreenshotListener"/>
   </listeners>
 
-  <test name="First and Second tests">
+  <test name="First Exercise">
     <classes>
       <class name="com.epam.tc.hw4.ex1.TestForFirstExercise"/>
       <class name="com.epam.tc.hw4.ex1.TestForSecondExercise"/>
     </classes>
   </test>
 
-  <test name="Failure test">
+  <test name="Second Exercise">
     <classes>
       <class name="com.epam.tc.hw4.ex2.TestForFailCase"/>
     </classes>
   </test>
+
 </suite>

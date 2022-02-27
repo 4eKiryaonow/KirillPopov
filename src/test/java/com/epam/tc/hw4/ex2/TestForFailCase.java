@@ -1,6 +1,8 @@
 package com.epam.tc.hw4.ex2;
 
+import com.epam.tc.hw4.DataProviderForTests;
 import com.epam.tc.hw4.SeleniumBaseClass;
+import com.epam.tc.hw4.TestData;
 import com.epam.tc.hw4.pageobject.HomePageObject;
 import com.epam.tc.hw4.steps.ActionStep;
 import com.epam.tc.hw4.steps.AssertionStep;
@@ -12,8 +14,9 @@ public class TestForFailCase extends SeleniumBaseClass {
 
     @Feature("Homework 4")
     @Story("Test for second exercise")
-    @Test
-    public void testForFailCase() {
+    @Test(dataProviderClass = DataProviderForTests.class,
+          dataProvider = "DataProviderForTests")
+    public void testForFailCase(TestData data) {
 
         HomePageObject homePageObject = new HomePageObject(driver);
         ActionStep actionStep = new ActionStep(driver, wait, homePageObject);
