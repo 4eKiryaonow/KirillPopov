@@ -47,5 +47,12 @@ public class UserTableObject extends AbstractPageObject {
 
     }
 
+    public List<String> getUserInfo() {
+
+        return userTable.findElements(By.cssSelector("tr")).stream().map(WebElement::getText)
+                        .collect(Collectors.toList());
+
+    }
+
 
 }

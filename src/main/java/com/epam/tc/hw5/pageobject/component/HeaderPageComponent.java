@@ -73,9 +73,8 @@ public class HeaderPageComponent extends AbstractBaseComponent {
 
     public void clickByUserTableButton() {
 
-        this.clickByServiceDropDownMenu();
         wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//ul[contains(@class, 'm-l8')]/descendant::ul/descendant::*[text()='User Table']")))
+                By.xpath("//ul[contains(@class, 'm-l8')]/descendant::ul/descendant::*[contains(text(),'User Table')]")))
             .click();
     }
 }
