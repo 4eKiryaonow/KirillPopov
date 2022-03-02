@@ -13,7 +13,7 @@ import org.testng.annotations.BeforeSuite;
 
 public abstract class SeleniumBaseClass {
 
-    public static final long TIMEOUT_SECONDS = 10;
+    protected static final long TIMEOUT_SECONDS = 10;
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected ChromeOptions options;
@@ -22,15 +22,13 @@ public abstract class SeleniumBaseClass {
     public void setUp(Object[] data, ITestContext context) {
 
         WebDriverManager.chromedriver().setup();
-        options = new ChromeOptions();
-        options.addArguments("start-maximized");
-        options.addArguments("--disable-dev-shm-usage");
+        options = new ChromeOptions()
+            .addArguments("start-maximized",
+                "-disable-dev-shm-usage");
         driver = new ChromeDriver(options);
         wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT_SECONDS));
         driver.navigate().to(((TestData) data[0]).getUrl());
         context.setAttribute("driver", driver);
-
-
     }
 
     @AfterMethod
