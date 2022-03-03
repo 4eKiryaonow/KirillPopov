@@ -1,5 +1,4 @@
 Feature: Third Exercise
-
   Scenario: User Table Page Log test
 
     Given I open JDI GitHub site

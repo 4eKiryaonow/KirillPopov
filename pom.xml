@@ -209,6 +209,14 @@
                 <testng.suite.file>${testng.configs.path}/FourthHomeWorkTestNG.xml</testng.suite.file>
             </properties>
         </profile>
+
+        <profile>
+            <id>FifthHomework</id>
+            <properties>
+                <testng.suite.file>${testng.configs.path}/FifthHomeWork.xml</testng.suite.file>
+            </properties>
+
+        </profile>
     </profiles>
 
     <reporting>

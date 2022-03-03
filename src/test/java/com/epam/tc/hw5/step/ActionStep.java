@@ -2,7 +2,6 @@ package com.epam.tc.hw5.step;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class ActionStep extends AbstractStep {
@@ -56,7 +55,12 @@ public class ActionStep extends AbstractStep {
 
     }
 
-    @When("I select 'vip' checkbox for \"Sergey Ivan\"")
+    @When("I select 'vip' checkbox for {string}")
+    public void clickOnCheckBox(String user) {
+
+        userTableObject.clickOnCheckBox(user);
+
+    }
 
 
 }

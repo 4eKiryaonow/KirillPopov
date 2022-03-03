@@ -3,17 +3,13 @@ package com.epam.tc.hw5.step;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.epam.tc.hw5.User;
-import com.epam.tc.hw5.UserTable;
+import com.fasterxml.jackson.annotation.JsonIgnoreType;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-import java.util.Set;
 import org.openqa.selenium.WebElement;
 
 public class AssertionStep extends AbstractStep {
@@ -88,7 +84,6 @@ public class AssertionStep extends AbstractStep {
         }
 
         assertThat(actualUserTable).containsAll(expectedUserTable);
-
     }
 
     @And("droplist should contain values in column Type for user Roman")
@@ -97,8 +92,11 @@ public class AssertionStep extends AbstractStep {
         List<String> expectedValues = dataTable.asList();
 
         assertThat(expectedValues).containsAll(userTableObject.getValuesDropdownType());
+    }
 
+    @Then("1 log row has {string} text in log section")
+    public void assertLogRow(String row) {
 
-
+        assertThat(userTableObject.rightSideBar().logsList()).contains(row);
     }
 }
