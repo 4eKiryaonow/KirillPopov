@@ -7,9 +7,13 @@ import com.epam.tc.hw5.UserTable;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import org.openqa.selenium.WebElement;
 
 public class AssertionStep extends AbstractStep {
@@ -58,27 +62,43 @@ public class AssertionStep extends AbstractStep {
     @And("User table should contain following values:")
     public void assertDataValues(DataTable dataTable) {
 
-        UserTable expectedUserTable = new UserTable();
+        List<User> expectedUserTable = new ArrayList<>();
+        List<User> actualUserTable = new ArrayList<>();
 
         List<Map<String, String>> rows = dataTable.asMaps(String.class, String.class);
 
         for (Map<String, String> columns : rows) {
 
-            expectedUserTable.addUser(
+            expectedUserTable.add(
                 new User(
                     columns.get("Number"),
                     columns.get("User"),
                     columns.get("Description")
                 ));
-
         }
-        System.out.println(expectedUserTable);
 
-        System.out.println(userTableObject.getUserInfo());
+        for (Map<String, String> users : userTableObject.getUserTableData()) {
+
+            actualUserTable.add(
+                new User(
+                    users.get("Number"),
+                    users.get("User"),
+                    users.get("Description")
+                ));
+        }
+
+        assertThat(actualUserTable).containsAll(expectedUserTable);
+
     }
 
     @And("droplist should contain values in column Type for user Roman")
     public void assertDataValuesType(DataTable dataTable) {
+
+        List<String> expectedValues = dataTable.asList();
+
+        assertThat(expectedValues).containsAll(userTableObject.getValuesDropdownType());
+
+
 
     }
 }

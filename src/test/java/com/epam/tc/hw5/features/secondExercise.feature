@@ -16,7 +16,7 @@ Feature: Second Exercise
       | 3      | Vladzimir        | Punisher                         |
       | 4      | Helen Bennett    | Captain America some description |
       | 5      | Yoshi Tannamuri  | Cyclope some description         |
-      | 6      | Giovanni Rovelli | Hulksome description             |
+      | 6      | Giovanni Rovelli | Hulk some description             |
     And droplist should contain values in column Type for user Roman
       | Dropdown Values |
       | Admin           |
