@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Sixth Homework">
+  <test name="Grid tests">
+<packages>
+  <package name="com.epam.tc.hw6.ex1.*"/>
+</packages>
+  </test>
+</suite>
