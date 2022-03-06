@@ -95,8 +95,11 @@ public class WebDriverFactory {
     }
 
     private static Capabilities createRemoteChromeCapabilities() {
+        ChromeOptions options = new ChromeOptions().addArguments(
+            "start-maximized",
+            "-disable-dev-shm-usage");
 
-        return new ChromeOptions();
+        return options;
     }
 
     private static Capabilities createRemoteFirefoxCapabilities() {
