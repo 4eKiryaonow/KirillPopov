@@ -104,6 +104,11 @@ public class WebDriverFactory {
 
     private static Capabilities createRemoteFirefoxCapabilities() {
 
-        return new FirefoxOptions();
+        FirefoxOptions options = new FirefoxOptions().addArguments(
+            "start-maximized",
+            "-disable-dev-shm-usage"
+        );
+
+        return options;
     }
 }
