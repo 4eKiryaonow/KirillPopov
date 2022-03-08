@@ -20,6 +20,7 @@
         <assertj-core.version>3.4.1</assertj-core.version>
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+        <cucumber.version>7.2.3</cucumber.version>
         <testng.suite.file>${testng.configs.path}/testNG.xml</testng.suite.file>
         <testng.configs.path>${project.build.testOutputDirectory}</testng.configs.path>
         <lombok.version>1.18.22</lombok.version>
@@ -53,6 +54,19 @@
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>${webdrivermanager.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -196,6 +210,14 @@
             <properties>
                 <testng.suite.file>${testng.configs.path}/FourthHomeWorkTestNG.xml</testng.suite.file>
             </properties>
+        </profile>
+
+        <profile>
+            <id>FifthHomework</id>
+            <properties>
+                <testng.suite.file>${testng.configs.path}/FifthHomeWork.xml</testng.suite.file>
+            </properties>
+
         </profile>
     </profiles>
 

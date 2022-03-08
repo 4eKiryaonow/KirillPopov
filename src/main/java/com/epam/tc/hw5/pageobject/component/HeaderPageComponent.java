@@ -1,4 +1,4 @@
-package com.epam.tc.hw3.pageobject.component;
+package com.epam.tc.hw5.pageobject.component;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -59,13 +59,22 @@ public class HeaderPageComponent extends AbstractBaseComponent {
 
     public void clickByServiceDropDownMenu() {
 
-        serviceDropdown.click();
+        wait.until(ExpectedConditions.elementToBeClickable(serviceDropdown))
+            .click();
     }
 
     public void clickByDifferentElements() {
-        this.clickByServiceDropDownMenu();
+
+        wait.until(ExpectedConditions.visibilityOf(
+            driver.findElement(
+                By.xpath("//ul[contains(@class, 'm-l8')]/descendant::ul/descendant::*[text()='Different elements']"))))
+            .click();
+    }
+
+    public void clickByUserTableButton() {
+
         wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//ul[contains(@class, 'm-l8')]/descendant::ul/descendant::*[text()='Different elements']")))
+                By.xpath("//ul[contains(@class, 'm-l8')]/descendant::ul/descendant::*[contains(text(),'User Table')]")))
             .click();
     }
 }
