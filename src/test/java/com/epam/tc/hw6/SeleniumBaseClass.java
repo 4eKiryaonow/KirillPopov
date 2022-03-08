@@ -19,7 +19,7 @@ public abstract class SeleniumBaseClass {
     public void setUp(Object[] data, ITestContext context) {
 
         driver = WebDriverProvider.getDriver();
-
+        
         wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT_SECONDS));
         driver.navigate().to(((TestData) data[0]).getUrl());
         context.setAttribute("driver", driver);
