@@ -6,6 +6,5 @@ public class CredentialData {
         u.setLogin("Roman");
         u.setPassword("Jdi1234");
         u.setUsername("ROMAN IOVLEV");
-
     });
 }

@@ -14,9 +14,4 @@ public class Header {
     public static Dropdown services;
     @UI("//a[contains(text(), 'Metals & Colors')]")
     public static Link metalsAndColors;
-
-
-
-
-
 }

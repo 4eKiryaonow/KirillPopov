@@ -20,7 +20,5 @@ public class TestClass implements TestInit {
         metalsAndColors.checkOpened();
         metalsAndColorsForm.fillAllFieldsInForm(data);
         metalsAndColors.checkResult(data);
-
-
     }
 }

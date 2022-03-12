@@ -77,6 +77,5 @@ public class MetalsAndColors extends WebPage {
         if (metalsAndColorsData.getVegetables() != null) {
             checkVegetablesResult(metalsAndColorsData.getVegetables());
         }
-
     }
 }

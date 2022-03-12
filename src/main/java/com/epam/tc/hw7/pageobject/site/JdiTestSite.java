@@ -9,8 +9,6 @@ import com.epam.tc.hw7.pageobject.entities.User;
 import com.epam.tc.hw7.pageobject.pages.HomePage;
 import com.epam.tc.hw7.pageobject.pages.MetalsAndColors;
 import com.epam.tc.hw7.pageobject.sections.Header;
-import com.epam.tc.hw7.pageobject.sections.LoginForm;
-import com.epam.tc.hw7.pageobject.sections.MetalsAndColorsForm;
 
 @JSite("https://jdi-testing.github.io/jdi-light/")
 public class JdiTestSite {
@@ -18,7 +16,4 @@ public class JdiTestSite {
     public static HomePage homePage;
     public static MetalsAndColors metalsAndColors;
     public static Header header;
-
-
-
 }
