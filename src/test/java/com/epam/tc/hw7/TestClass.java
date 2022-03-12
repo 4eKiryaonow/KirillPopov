@@ -1,27 +1,26 @@
 package com.epam.tc.hw7;
 
-import static com.epam.tc.hw7.pageobject.pages.HomePage.loginForm;
-import static com.epam.tc.hw7.pageobject.pages.HomePage.userIcon;
-import static com.epam.tc.hw7.pageobject.sections.Header.metalsAndColors;
-import static com.epam.tc.hw7.pageobject.site.JdiTestSite.homePage;
+import static com.epam.tc.hw7.pageobject.entities.CredentialData.ROMAN;
+import static com.epam.tc.hw7.pageobject.pages.HomePage.assertUserName;
+import static com.epam.tc.hw7.pageobject.pages.MetalsAndColors.metalsAndColorsForm;
+import static com.epam.tc.hw7.pageobject.site.JdiTestSite.header;
+import static com.epam.tc.hw7.pageobject.site.JdiTestSite.metalsAndColors;
 
-import com.epam.tc.hw7.pageobject.entities.User;
+import com.epam.tc.hw7.pageobject.entities.MetalsAndColorsData;
 import org.testng.annotations.Test;
 
 public class TestClass implements TestInit {
 
-    public static User ROMAN = new User().set(c -> {
-        c.username = "Roman";
-        c.password = "Jdi1234";
-    });
+    @Test(dataProvider = "provider",
+          dataProviderClass = DataProviderTest.class)
+    public void testMethod(MetalsAndColorsData data) {
 
-    @Test
-    public void testMethod() {
+        assertUserName(ROMAN);
+        header.metalsAndColors.click();
+        metalsAndColors.checkOpened();
+        metalsAndColorsForm.fillAllFieldsInForm(data);
+        metalsAndColors.checkResult(data);
 
-        homePage.open();
-        userIcon.click();
-        loginForm.loginAs(ROMAN);
-        metalsAndColors.click();
 
     }
 }

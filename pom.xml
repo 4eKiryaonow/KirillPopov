@@ -233,9 +233,9 @@
         </profile>
 
         <profile>
-            <id>SixthHomework</id>
+            <id>JdiHomework</id>
             <properties>
-                <testng.suite.file>${testng.configs.path}/SixthHomeWorkTestNG.xml</testng.suite.file>
+                <testng.suite.file>${testng.configs.path}/jdiHomework.xml</testng.suite.file>
             </properties>
         </profile>
     </profiles>
