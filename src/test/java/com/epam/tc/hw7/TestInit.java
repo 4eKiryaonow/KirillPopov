@@ -32,7 +32,6 @@ public interface TestInit {
 
     @AfterMethod(alwaysRun = true)
     static void logout() {
-
         homePage.logout();
     }
 

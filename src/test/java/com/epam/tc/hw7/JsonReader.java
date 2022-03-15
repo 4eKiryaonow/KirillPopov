@@ -4,7 +4,6 @@ import com.epam.tc.hw7.pageobject.entities.MetalsAndColorsData;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.lang.reflect.Type;
 import java.util.Map;
@@ -13,7 +12,7 @@ public class JsonReader {
 
     public static final String METALS_COLORS_DATA_SET = ".\\src\\test\\resources\\JDI_ex8_metalsColorsDataSet.json";
 
-    public static Map<String, MetalsAndColorsData> getDataFromJsonFile() throws FileNotFoundException {
+    public static Map<String, MetalsAndColorsData> getDataFromJsonFile() {
         Map<String, MetalsAndColorsData> dataFromJsonFile;
         Gson gson = new Gson();
 

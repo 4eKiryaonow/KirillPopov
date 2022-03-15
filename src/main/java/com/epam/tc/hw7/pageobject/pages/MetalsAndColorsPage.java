@@ -13,7 +13,7 @@ import java.util.List;
 
 @Url("/metals-colors.html")
 @Title("Metal and Colors")
-public class MetalsAndColors extends WebPage {
+public class MetalsAndColorsPage extends WebPage {
 
     public static MetalsAndColorsForm metalsAndColorsForm;
 
@@ -33,35 +33,29 @@ public class MetalsAndColors extends WebPage {
     private Text vegetablesResult;
 
     private void checkSummaryResult(Integer firstNumber, Integer secondNumber) {
-
         Integer sum = firstNumber + secondNumber;
         summaryResult.assertThat().text(equalTo(String.format("Summary: %s", sum)));
     }
 
     private void checkElementsResult(List<String> elements) {
-
         String elementsRow = String.join(", ", elements);
         elementsResult.assertThat().text(equalTo(String.format("Elements: %s", elementsRow)));
     }
 
     private void checkColorsResult(String color) {
-
         colorResult.assertThat().text(equalTo(String.format("Color: %s", color)));
     }
 
     private void checkMetalsResult(String metal) {
-
         metalsResult.assertThat().text(equalTo(String.format("Metal: %s", metal)));
     }
 
     private void checkVegetablesResult(List<String> vegetables) {
-
         String vegetablesRow = String.join(", ", vegetables);
         vegetablesResult.assertThat().text(equalTo(String.format("Vegetables: %s", vegetablesRow)));
     }
 
     public void checkResult(MetalsAndColorsData metalsAndColorsData) {
-
         if ((metalsAndColorsData.getSummary().get(0) != null) && (metalsAndColorsData.getSummary().get(1) != null)) {
             checkSummaryResult(metalsAndColorsData.getSummary().get(0), metalsAndColorsData.getSummary().get(1));
         }

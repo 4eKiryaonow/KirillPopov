@@ -17,10 +17,13 @@ public class HomePage extends WebPage {
 
     @Css("form")
     public static LoginForm loginForm;
+
     @Css("img#user-icon")
     public static Icon userIcon;
+
     @UI(".logout")
     public static Button logOut;
+
     @UI("#user-name")
     public static Text username;
 
@@ -29,7 +32,6 @@ public class HomePage extends WebPage {
     }
 
     public static void logout() {
-
         userIcon.click();
         logOut.click();
     }

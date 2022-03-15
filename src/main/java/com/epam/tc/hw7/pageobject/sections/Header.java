@@ -8,10 +8,13 @@ public class Header {
 
     @UI("//a[contains(text(), 'Home')]")
     public static Link home;
+
     @UI("//a[contains(text(), 'Contact form')]")
     public static Link contactForm;
+
     @UI(".dropdown-toggle")
     public static Dropdown services;
+
     @UI("//a[contains(text(), 'Metals & Colors')]")
     public static Link metalsAndColors;
 }

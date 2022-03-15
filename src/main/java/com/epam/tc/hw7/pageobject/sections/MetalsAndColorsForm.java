@@ -75,6 +75,7 @@ public class MetalsAndColorsForm extends Form<MetalsAndColorsForm> {
         }
 
         for (String vegetable : metalsAndColorsData.getVegetables()) {
+
             saladDropDownList.select(vegetable);
         }
 

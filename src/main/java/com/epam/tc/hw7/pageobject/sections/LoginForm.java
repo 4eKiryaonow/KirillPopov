@@ -10,8 +10,10 @@ public class LoginForm extends Form<User> {
 
     @UI("#name")
     TextField login;
+
     @UI("#password")
     TextField password;
+
     @UI("#login-button")
     Button loginButton;
 }
