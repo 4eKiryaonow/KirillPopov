@@ -88,6 +88,11 @@
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.epam.jdi</groupId>
+            <artifactId>jdi-light-html</artifactId>
+            <version>1.4.4</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -228,9 +233,9 @@
         </profile>
 
         <profile>
-            <id>SixthHomework</id>
+            <id>JdiHomework</id>
             <properties>
-                <testng.suite.file>${testng.configs.path}/SixthHomeWorkTestNG.xml</testng.suite.file>
+                <testng.suite.file>${testng.configs.path}/jdiHomework.xml</testng.suite.file>
             </properties>
         </profile>
     </profiles>

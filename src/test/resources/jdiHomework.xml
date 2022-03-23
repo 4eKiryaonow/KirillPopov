@@ -1,0 +1,10 @@
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="JDI Homework">
+
+  <test name="Test Metals and Colors">
+    <packages>
+      <package name="com.epam.tc.hw7"/>
+    </packages>
+  </test>
+</suite>
